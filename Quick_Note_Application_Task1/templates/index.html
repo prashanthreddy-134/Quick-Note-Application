@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean, simple full-stack note-taking application.">
+  <title>Quick Notes — Your thoughts, organized</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">✦</span> quicknotes</a>
+      <span class="saved-label"><span class="live-dot"></span> Saved to your database</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">YOUR PERSONAL SPACE</p>
+        <h1>Make room for<br><span>your thoughts.</span></h1>
+        <p class="subtitle">Capture ideas, keep track of details, and find what matters.</p>
+      </section>
+
+      <section class="composer card">
+        <div class="section-heading">
+          <div><p class="eyebrow">NEW NOTE</p><h2 id="form-heading">What’s on your mind?</h2></div>
+          <span class="sparkle">✳</span>
+        </div>
+        <form id="note-form">
+          <label for="note-title">Title</label>
+          <input id="note-title" maxlength="120" placeholder="Give your note a title..." required>
+          <label for="note-content">Your note</label>
+          <textarea id="note-content" rows="5" placeholder="Start writing here..." required></textarea>
+          <div class="form-bottom">
+            <span id="char-count">0 characters</span>
+            <div class="actions">
+              <button type="button" class="button button-ghost" id="cancel-edit" hidden>Cancel</button>
+              <button type="submit" class="button button-primary" id="save-button">Save note <span>↗</span></button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="notes-section">
+        <div class="notes-heading">
+          <div><p class="eyebrow">YOUR COLLECTION</p><h2>All notes <span id="note-count">0</span></h2></div>
+          <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search notes..." aria-label="Search notes"></div>
+        </div>
+        <div id="status" class="status" role="status"></div>
+        <div id="notes-grid" class="notes-grid"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <div class="empty-icon">✎</div><h3>No notes here yet</h3>
+          <p>Your next great idea deserves a place. Write your first note above.</p>
+        </div>
+      </section>
+    </main>
+    <footer>Made for ideas worth keeping <span>✦</span></footer>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
